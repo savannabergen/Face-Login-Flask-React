@@ -15,11 +15,11 @@ UPLOAD_FOLDER = 'uploads'  # Folder where images are stored
 
 def get_db_connection():
     conn = psycopg2.connect(
-        host="localhost",
+        host=os.environ.get('REACT_APP_DB_HOST'),
         port=5432,
-        database="face_login",
-        user="postgres",
-        password="admin"
+        database=os.environ.get('REACT_APP_DB_DATABASE'),
+        user=os.environ.get('REACT_APP_DB_USER'),
+        password=os.environ.get('REACT_APP_DB_PASSWORD')
     )
     return conn
 
